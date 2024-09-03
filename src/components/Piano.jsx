@@ -33,8 +33,7 @@ function Piano({
   scaleNotes,
   chordNotes,
   enharmonicConversion,
-  chordNotesKey,
-  clicked
+  chordNotesKey
 }) {
   const notes = [
     "c0",
@@ -139,20 +138,20 @@ function Piano({
 
   function chordPlayer(params) {
     if (Array.isArray(params)) {
-        params.forEach(note => {
-          const audioFile = soundFiles[note];
-          if (audioFile) {
-            const audio = new Audio(audioFile);
-            audio.volume = 0.25;
-            audio.play();
-          }
-        });
-      }
+      params.forEach((note) => {
+        const audioFile = soundFiles[note];
+        if (audioFile) {
+          const audio = new Audio(audioFile);
+          audio.volume = 0.25;
+          audio.play();
+        }
+      });
+    }
   }
 
   useEffect(() => {
     chordPlayer(chordNotesKey);
-  }, [clicked]);
+  }, [chordNotesKey]);
 
   displayScaleCorrectOrder();
 

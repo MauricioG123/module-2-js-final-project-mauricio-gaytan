@@ -106,6 +106,7 @@ function ChordMaker({
       }
 
       displayChordCorrectOrder(chordNotes);
+      setChordNotes(chordNotes);
     }
   }
 
@@ -156,7 +157,6 @@ function ChordMaker({
         }
       }
     }
-    setChordNotes(chordNotes);
     setChordNotesKey(chordNotesKey);
   }
 

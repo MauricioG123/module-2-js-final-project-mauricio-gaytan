@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 function Key({
   scaleNotesKey,
   note,
-  chordNotes,
   scaleNotes,
   chordNotesKey,
   soundFiles,
