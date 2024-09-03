@@ -1,23 +1,26 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Button from '@mui/material/Button';
 
 function Key({ scaleNotesKey, note, chordNotes, scaleNotes, chordNotesKey }) {
 
     const isNoteInScale = scaleNotesKey.includes(note);
-    const enharmonicNote = enharmonicConversion(note);
+    const enharmonicNote = enharmonicConversionKey(note);
     const isEnharmonicInScale = enharmonicNote && scaleNotesKey.includes(enharmonicNote);
     const isInScale = isNoteInScale || isEnharmonicInScale;
-
-    const isInChord = chordNotesKey.includes(note) || (enharmonicNote && chordNotesKey.includes(enharmonicNote));
+    const isChordInScale = scaleNotes.includes(note.length > 2 ? note.slice(0, 2) : note[0]) ;
+    const isInChord = (chordNotesKey.includes(note) || (enharmonicNote && chordNotesKey.includes(enharmonicNote)));
+    const displayNoteBool = (isChordInScale && isInChord);
     
     const getColor = () => {
         if (isInChord) {
-            return isInScale ? 'green' : 'blue';
+            return displayNoteBool ? '#7cc96b' : '#62a4d7';
         }
         return isInScale ? '#fd5b5b' : (note.length > 2 ? 'black' : 'white');
     };
 
-    function enharmonicConversion(convertedNotes) {
+    function enharmonicConversionKey(convertedNotes) {
         const conversionMap = {
             "db0": "c#0",
             "c#0": "db0",
@@ -69,6 +72,37 @@ function Key({ scaleNotesKey, note, chordNotes, scaleNotes, chordNotesKey }) {
             "b1": "cb1"
         };
 
+        return conversionMap[convertedNotes] || null;
+    }
+
+    function enharmonicConversion(convertedNotes) {
+        const conversionMap = {
+            "db": "c#",
+            "c#": "db",
+            "eb": "d#",
+            "d#": "eb",
+            "gb": "f#",
+            "f#": "gb",
+            "ab": "g#",
+            "g#": "ab",
+            "bb": "a#",
+            "a#": "bb",
+            "c": "dbb",
+            "dbb": "c",
+            "d": "ebb",
+            "ebb": "d",
+            "fb": "e",
+            "e": "fb",
+            "g": "abb",
+            "abb": "g",
+            "a": "bbb",
+            "bbb": "a",
+            "f": "e#",
+            "e#": "f",
+            "cb": "b",
+            "b": "cb"
+        };
+    
         return conversionMap[convertedNotes] || null;
     }
 
