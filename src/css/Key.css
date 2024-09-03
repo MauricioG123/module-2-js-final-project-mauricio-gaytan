@@ -1,0 +1,27 @@
+.key {
+    background-color: white !important;
+    height: 300px !important;
+    width: 60px !important;
+    border: 2px solid black !important;
+    color: white;
+}
+
+.key-text {
+    position: relative;
+    color: black;
+    font-weight: 600;
+    font-size: 36px;
+    margin-top: 240px;
+    pointer-events: none;
+}
+
+.keyfs {
+    position: relative !important;
+    color: black !important;
+    background-color: black !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    height: 200px !important;
+    width: 30px !important;
+    z-index: 2 !important;
+}
