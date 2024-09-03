@@ -16,7 +16,7 @@ const ScaleContainer = styled(TableContainer)({
   maxHeight: 440,
 });
 
-function ChordResult({ setBase, setChord }) {
+function ChordResult({ setBase, setChord, clicked, setClicked }) {
   const scales = [
     "Major",
     "Minor",
@@ -34,6 +34,7 @@ function ChordResult({ setBase, setChord }) {
   function clickHandler(rowIndex, colIndex) {
     setBase(scalePoints[rowIndex].split("")[0].toLowerCase());
     setChord(scales[colIndex].toLowerCase());
+    setClicked(!clicked);
   }
 
   return (

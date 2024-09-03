@@ -15,6 +15,7 @@ function App() {
   const [chord, setChord] = useState("");
   const [chordNotes, setChordNotes] = useState([]);
   const [chordNotesKey, setChordNotesKey] = useState([]);
+  const [clicked, setClicked] = useState(false);
 
   function onClickHandler() {
     setScale("");
@@ -42,6 +43,7 @@ function App() {
             scaleNotes={scaleNotes}
             chordNotes={chordNotes}
             chordNotesKey={chordNotesKey}
+            clicked={clicked}
           />
         </Grid2>
         <Grid2 item>
@@ -69,7 +71,7 @@ function App() {
           </Button>
         </Grid2>
         <Grid2 item>
-          <ChordResult setBase={setBase} setChord={setChord} />
+          <ChordResult setBase={setBase} setChord={setChord} clicked={clicked} setClicked={setClicked} />
           <ChordMaker
             base={base}
             chord={chord}
